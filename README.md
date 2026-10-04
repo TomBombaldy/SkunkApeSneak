@@ -4,7 +4,7 @@ A four-player minigame for [Super Bionic Bash](https://limbitless-solutions.org/
 
 The Skunk Ape of the Florida swamps has swiped the campers' picnic baskets. You are junior park rangers sneaking up to get them back while he snoozes. Freeze when he turns around, or get stink-blasted back down the trail.
 
-A 35-second gameplay video is in [`Video/SkunkApeSneak_gameplay_small.mp4`](Video/SkunkApeSneak_gameplay_small.mp4).
+A 38-second gameplay video is in [`Video/SkunkApeSneak_gameplay_small.mp4`](Video/SkunkApeSneak_gameplay_small.mp4).
 
 ## How to play
 
