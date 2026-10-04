@@ -1,0 +1,12 @@
+/NOLOGO
+/errorReport:prompt
+/MACHINE:x64
+/SUBSYSTEM:WINDOWS
+/DEF
+/NAME:"UnrealEditor-ShootingRange-Win64-DebugGame.dll"
+/IGNORE:4221
+/NODEFAULTLIB
+"C:/Users/nortm/OneDrive/Documents/Github/Limbitless/UnrealParty/Intermediate/Build/Win64/x64/werid_flexEditor/DebugGame/UnrealEd/SharedPCH.UnrealEd.Project.NonOptimized.ValApi.ValExpApi.Cpp20.h.obj"
+"C:/Users/nortm/OneDrive/Documents/Github/Limbitless/UnrealParty/Plugins/BashMinigames/Intermediate/Build/Win64/x64/UnrealEditor/DebugGame/ShootingRange/Module.ShootingRange.cpp.obj"
+"C:/Users/nortm/OneDrive/Documents/Github/Limbitless/UnrealParty/Plugins/BashMinigames/Intermediate/Build/Win64/x64/UnrealEditor/DebugGame/ShootingRange/Default.rc2.res"
+/OUT:"C:/Users/nortm/OneDrive/Documents/Github/Limbitless/UnrealParty/Plugins/BashMinigames/Intermediate/Build/Win64/x64/UnrealEditor/DebugGame/ShootingRange/UnrealEditor-ShootingRange-Win64-DebugGame.lib"
