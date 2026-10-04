@@ -9,7 +9,7 @@ The Skunk Ape of the Florida swamps has swiped the campers' picnic baskets. You 
 - Light flex: one quick step.
 - Medium flex: two steps.
 - Strong flex: a four-step leap that leaves you in the air for a full second.
-- A warning plays just before the Skunk Ape turns around. Anyone still moving while he looks is knocked back three steps.
+- A red warning ball and a ping appear just before the Skunk Ape turns around. Anyone still moving while he looks is knocked back three steps.
 - The first ranger to reach the baskets wins. If nobody makes it before time runs out, the ranger who got farthest wins.
 
 ### Keyboard controls (no flex controller needed)
@@ -21,6 +21,7 @@ The Skunk Ape of the Florida swamps has swiped the campers' picnic baskets. You 
 | P | Strong flex |
 | Q | Ready all players (editor debug) |
 | 1-4 | Set the player count (editor debug) |
+| B | Hand rangers 2-4 to the computer (editor debug) |
 
 ## Opening the project
 
