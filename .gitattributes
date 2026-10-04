@@ -15,3 +15,6 @@
 *.mp3 filter=lfs diff=lfs merge=lfs -text
 *.ogg filter=lfs diff=lfs merge=lfs -text
 *.mp4 filter=lfs diff=lfs merge=lfs -text
+
+# The organizers ship their plugins as plain Git objects; keep them out of LFS
+Plugins/** !filter !diff !merge
