@@ -9,9 +9,9 @@ A 35-second gameplay video is in [`Video/SkunkApeSneak_gameplay_small.mp4`](Vide
 ## How to play
 
 - Light flex: one careful step.
-- Medium flex: two steps.
-- Strong flex: a four-step leap. It covers ground fastest, but you are stuck in the air for almost a second.
-- A red exclamation mark and a ping appear just before the Skunk Ape turns around. Anyone still moving while he looks gets stink-blasted back five steps.
+- Medium flex: a three-step hop.
+- Strong flex: a six-step leap. The bigger the jump, the faster you cover ground, but the longer you are committed: the leap keeps you in the air for over a second.
+- A red exclamation mark and a ping appear just before the Skunk Ape turns around. Anyone still moving while he looks gets stink-blasted back six steps.
 - The first ranger to reach the baskets wins. If nobody makes it before time runs out, the ranger who got farthest wins.
 
 ### Keyboard controls (no flex controller needed)

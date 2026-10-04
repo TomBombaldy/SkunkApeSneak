@@ -96,13 +96,31 @@ def hop():
 
 
 def caught():
-    """The stink blast: a wet raspberry with a whoosh over it."""
-    d = 0.75
+    """Getting stink-blasted: a wet raspberry, a slide whistle falling away, and a boing on landing."""
+    out = np.zeros(int(SR * 1.25))
+    # the raspberry, speeding up as it runs out of puff
+    d = 0.42
     t = secs(d)
-    flutter = 0.55 + 0.45 * np.sign(np.sin(TAU * 24 * t + 0.6 * np.sin(TAU * 3 * t)))
-    rasp = band(sweep(95, 48, d, "saw") * flutter, 40, 900) * np.exp(-t * 2.2)
-    whoosh = band(rng.normal(0, 1, len(t)), 300, 2600) * np.sin(np.pi * np.minimum(t / d, 1)) ** 2 * np.exp(-t * 3) * 0.5
-    return normalize(fade(np.tanh(2.2 * rasp) + whoosh, 0.004, 0.08))
+    flutter = 0.5 + 0.5 * np.sign(np.sin(TAU * (22 + 14 * t / d) * t))
+    rasp = np.tanh(2.4 * band(sweep(110, 62, d, "saw") * flutter, 45, 1100)) * np.exp(-t * 3.0)
+    out[:len(rasp)] += fade(rasp, 0.004, 0.05) * 0.9
+    # a slide whistle dropping as the ranger sails backwards
+    d = 0.62
+    t = secs(d)
+    freq = 1500 * (330 / 1500) ** (t / d) * (1 + 0.035 * np.sin(TAU * 7.5 * t))
+    phase = TAU * np.cumsum(freq) / SR
+    whistle = (np.sin(phase) + 0.18 * np.sin(2 * phase)) * np.sin(np.pi * np.minimum(t / d, 1)) ** 0.6
+    at = int(SR * 0.14)
+    out[at:at + len(whistle)] += fade(whistle, 0.02, 0.06) * 0.42
+    # and a springy boing as they land (the knock-back takes 0.8 s)
+    d = 0.4
+    t = secs(d)
+    freq = 150 * (1 + 0.55 * np.exp(-t * 7) * np.sin(TAU * 13 * t))
+    phase = TAU * np.cumsum(freq) / SR
+    boing = (np.sin(phase) + 0.4 * np.sin(2 * phase) + 0.2 * np.sin(3 * phase)) * np.exp(-t * 7.5)
+    at = int(SR * 0.82)
+    out[at:at + len(boing)] += fade(boing, 0.003, 0.05) * 0.7
+    return normalize(out)
 
 
 def win():
