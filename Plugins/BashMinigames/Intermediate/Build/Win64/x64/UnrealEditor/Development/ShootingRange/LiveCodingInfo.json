@@ -1,0 +1,12 @@
+{
+	"RemapUnityFiles": 
+	{
+		"Module.ShootingRange.cpp.obj": [
+			"ShootingRange.init.gen.cpp.obj",
+			"SRCannon.gen.cpp.obj",
+			"PerModuleInline.gen.cpp.obj",
+			"ShootingRange.cpp.obj",
+			"SRCannon.cpp.obj"
+		]
+	}
+}
