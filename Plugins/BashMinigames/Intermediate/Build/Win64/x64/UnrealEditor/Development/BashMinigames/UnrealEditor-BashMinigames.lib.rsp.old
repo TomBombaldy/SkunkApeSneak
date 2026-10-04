@@ -1,0 +1,12 @@
+/NOLOGO
+/errorReport:prompt
+/MACHINE:x64
+/SUBSYSTEM:WINDOWS
+/DEF
+/NAME:"UnrealEditor-BashMinigames.dll"
+/IGNORE:4221
+/NODEFAULTLIB
+"C:/Users/nortm/Downloads/UnrealParty/Intermediate/Build/Win64/x64/werid_flexEditor/Development/UnrealEd/SharedPCH.UnrealEd.Project.ValApi.ValExpApi.Cpp20.h.obj"
+"C:/Users/nortm/Downloads/UnrealParty/Plugins/BashMinigames/Intermediate/Build/Win64/x64/UnrealEditor/Development/BashMinigames/Module.BashMinigames.cpp.obj"
+"C:/Users/nortm/Downloads/UnrealParty/Plugins/BashMinigames/Intermediate/Build/Win64/x64/UnrealEditor/Development/BashMinigames/Default.rc2.res"
+/OUT:"C:/Users/nortm/Downloads/UnrealParty/Plugins/BashMinigames/Intermediate/Build/Win64/x64/UnrealEditor/Development/BashMinigames/UnrealEditor-BashMinigames.lib"
