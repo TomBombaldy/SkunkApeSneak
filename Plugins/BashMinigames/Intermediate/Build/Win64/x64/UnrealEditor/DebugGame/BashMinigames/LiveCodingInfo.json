@@ -1,0 +1,9 @@
+{
+	"RemapUnityFiles": 
+	{
+		"Module.BashMinigames.cpp.obj": [
+			"PerModuleInline.gen.cpp.obj",
+			"BashMinigames.cpp.obj"
+		]
+	}
+}
