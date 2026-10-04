@@ -1,0 +1,20 @@
+{
+	"OutputFiles": [
+		"..\\..\\..\\x64\\UnrealGame\\Shipping\\BashCore\\Module.BashCore.cpp.obj",
+		"..\\..\\..\\x64\\UnrealGame\\Shipping\\BashCore\\BashCore.cpp.obj",
+		"..\\..\\..\\x64\\UnrealGame\\Shipping\\BashCore\\BashCoreBlueprintLibrary.cpp.obj",
+		"..\\..\\..\\x64\\UnrealGame\\Shipping\\BashCore\\BashCoreLog.cpp.obj",
+		"..\\..\\..\\x64\\UnrealGame\\Shipping\\BashCore\\BashGamemode.cpp.obj",
+		"..\\..\\..\\x64\\UnrealGame\\Shipping\\BashCore\\AIUIInputComponent.cpp.obj",
+		"..\\..\\..\\x64\\UnrealGame\\Shipping\\BashCore\\CustomizablePlayerComponent.cpp.obj",
+		"..\\..\\..\\x64\\UnrealGame\\Shipping\\BashCore\\UIInputComponent.cpp.obj",
+		"..\\..\\..\\x64\\UnrealGame\\Shipping\\BashCore\\UIInputComponentBase.cpp.obj",
+		"..\\..\\..\\x64\\UnrealGame\\Shipping\\BashCore\\AIPlayerDataSubsystem.cpp.obj",
+		"..\\..\\..\\x64\\UnrealGame\\Shipping\\BashCore\\BashLocalPlayer.cpp.obj",
+		"..\\..\\..\\x64\\UnrealGame\\Shipping\\BashCore\\BashPlayerController.cpp.obj",
+		"..\\..\\..\\x64\\UnrealGame\\Shipping\\BashCore\\CircularWipeWidget.cpp.obj",
+		"..\\..\\..\\x64\\UnrealGame\\Shipping\\BashCore\\FlexCalibrationMenu.cpp.obj",
+		"..\\..\\..\\x64\\UnrealGame\\Shipping\\BashCore\\Menu.cpp.obj",
+		"..\\..\\..\\x64\\UnrealGame\\Shipping\\BashCore\\SelectableWidget.cpp.obj"
+	]
+}

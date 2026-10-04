@@ -1,0 +1,8 @@
+{
+	"OutputFiles": [
+		"..\\..\\..\\x64\\UnrealGame\\Development\\LimbitlessBTWindows\\Module.LimbitlessBTWindows.cpp.obj",
+		"..\\..\\..\\x64\\UnrealGame\\Development\\LimbitlessBTWindows\\LimbitlessBTWindows.cpp.obj",
+		"..\\..\\..\\x64\\UnrealGame\\Development\\LimbitlessBTWindows\\WindowsBluetoothManager.cpp.obj",
+		"..\\..\\..\\x64\\UnrealGame\\Development\\LimbitlessBTWindows\\WindowsFlexController.cpp.obj"
+	]
+}

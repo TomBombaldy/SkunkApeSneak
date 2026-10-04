@@ -1,0 +1,8 @@
+{
+	"OutputFiles": [
+		"..\\..\\..\\x64\\UnrealGame\\Shipping\\WinBT\\Module.WinBT.cpp.obj",
+		"..\\..\\..\\x64\\UnrealGame\\Shipping\\WinBT\\BtDeviceHolder.cpp.obj",
+		"..\\..\\..\\x64\\UnrealGame\\Shipping\\WinBT\\WinBLEManager.cpp.obj",
+		"..\\..\\..\\x64\\UnrealGame\\Shipping\\WinBT\\WinBT.cpp.obj"
+	]
+}

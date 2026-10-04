@@ -1,0 +1,8 @@
+{
+	"OutputFiles": [
+		"..\\..\\..\\x64\\UnrealGame\\Shipping\\PlatformManager\\Module.PlatformManager.cpp.obj",
+		"..\\..\\..\\x64\\UnrealGame\\Shipping\\PlatformManager\\BluetoothManagerSubsystem.cpp.obj",
+		"..\\..\\..\\x64\\UnrealGame\\Shipping\\PlatformManager\\LimbitlessBluetoothManager.cpp.obj",
+		"..\\..\\..\\x64\\UnrealGame\\Shipping\\PlatformManager\\PlatformManager.cpp.obj"
+	]
+}
