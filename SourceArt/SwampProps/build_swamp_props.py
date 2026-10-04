@@ -49,6 +49,8 @@ PALETTE = {
     "Wood": (0.34, 0.22, 0.12),
     "Flame": (1.00, 0.45, 0.08),
     "FlameCore": (1.00, 0.85, 0.30),
+    "HatFelt": (0.50, 0.38, 0.22),
+    "PlayerColor": (0.90, 0.15, 0.12),
 }
 MATERIALS = {}
 for key, rgb in PALETTE.items():
@@ -114,6 +116,14 @@ class Prop:
         nf, nv = len(self.bm.faces), len(self.bm.verts)
         verts = [self.bm.verts.new(p) for p in points]
         self.bm.faces.new(verts)
+        self._finish(key, nf, nv, 0.0)
+
+    def solid(self, key, points, faces):
+        """A closed shape from shared corner points, so its faces all end up pointing outwards."""
+        nf, nv = len(self.bm.faces), len(self.bm.verts)
+        verts = [self.bm.verts.new(p) for p in points]
+        for face in faces:
+            self.bm.faces.new([verts[i] for i in face])
         self._finish(key, nf, nv, 0.0)
 
     def build(self):
@@ -259,16 +269,15 @@ def picnic_blanket(name, seed):
 
 def tent(name, seed):
     p = Prop(name, seed)
-    w, h, length = 100, 150, 250
-    front = [(-w, -length / 2, 0), (w, -length / 2, 0), (0, -length / 2, h)]
-    back = [(-w, length / 2, 0), (w, length / 2, 0), (0, length / 2, h)]
-    p.poly("Canvas", [front[0], front[2], back[2], back[0]])               # left slope
-    p.poly("Canvas", [front[2], front[1], back[1], back[2]])               # right slope
-    p.poly("Canvas", [back[1], back[0], back[2]])                          # back wall
-    p.poly("Canvas", [front[0], front[1], front[2]])                       # front wall
-    p.poly("CanvasDark", [(-42, -length / 2 - 1, 0), (42, -length / 2 - 1, 0), (0, -length / 2 - 1, 104)])   # doorway
-    p.cone("Wood", (0, -length / 2 - 2, 0), (0, -length / 2 - 2, h + 12), 3, 3, seg=4)      # poles
-    p.cone("Wood", (0, length / 2 + 2, 0), (0, length / 2 + 2, h + 12), 3, 3, seg=4)
+    w, h, half = 100, 150, 125
+    prism = [(0, 1, 2), (3, 5, 4), (0, 3, 4, 1), (1, 4, 5, 2), (2, 5, 3, 0)]
+    # canvas shell: front triangle, back triangle, floor and the two slopes
+    p.solid("Canvas", [(-w, -half, 0), (w, -half, 0), (0, -half, h), (-w, half, 0), (w, half, 0), (0, half, h)], prism)
+    # dark doorway standing just proud of the front wall
+    p.solid("CanvasDark", [(-42, -half - 3, 0), (42, -half - 3, 0), (0, -half - 3, 104),
+                           (-42, -half + 1, 0), (42, -half + 1, 0), (0, -half + 1, 104)], prism)
+    p.cone("Wood", (0, -half - 5, 0), (0, -half - 5, h + 12), 3, 3, seg=4)      # poles
+    p.cone("Wood", (0, half + 2, 0), (0, half + 2, h + 12), 3, 3, seg=4)
     return p.build()
 
 
@@ -309,6 +318,44 @@ def grass_tuft(name, seed):
     return p.build()
 
 
+def ranger_hat(name, seed):
+    """A junior ranger's campaign hat. The band takes the player's colour. Pivot is where it sits on the head."""
+    p = Prop(name, seed)
+    p.cone("HatFelt", (0, 0, 0), (0, 0, 2.5), 30, 28, seg=12)            # wide flat brim
+    p.cone("HatFelt", (0, 0, 2.5), (0, 0, 17), 15, 12.5, seg=10)         # crown
+    p.cone("HatFelt", (0, 0, 17), (0, 0, 20), 12.5, 7, seg=10)           # pinched top
+    p.cone("PlayerColor", (0, 0, 2.6), (0, 0, 10), 16.0, 14.6, seg=10, caps=False)  # band
+    return p.build()
+
+
+def player_ring(name, seed):
+    """A flat ring that sits on the ground under a ranger in the player's colour."""
+    p = Prop(name, seed)
+    seg, r_out, r_in = 24, 92, 72
+    for k in range(seg):
+        a0, a1 = k / seg * math.tau, (k + 1) / seg * math.tau
+        p.poly("PlayerColor", [(math.cos(a0) * r_in, math.sin(a0) * r_in, 0), (math.cos(a0) * r_out, math.sin(a0) * r_out, 0),
+                               (math.cos(a1) * r_out, math.sin(a1) * r_out, 0), (math.cos(a1) * r_in, math.sin(a1) * r_in, 0)])
+    return p.build()
+
+
+def backpack(name, seed):
+    """A junior ranger's backpack in the player's colour, with a bedroll on top.
+
+    Pivot is the upper spine; the pack hangs behind it (+Y here, which is the ranger's back in Unreal).
+    """
+    p = Prop(name, seed)
+    p.box("PlayerColor", (0, 17, -5), (30, 15, 34))                      # main bag
+    p.box("PlayerColor", (0, 26, -12), (20, 4, 14))                      # outer pocket
+    p.box("PlayerColor", (0, 17.5, 10.5), (32, 17, 5))                   # top flap
+    for x in (-8, 8):
+        p.box("HatFelt", (x, 25.2, 3), (3, 1.6, 18))                     # flap straps
+    p.cone("Canvas", (-19, 17, 19.5), (19, 17, 19.5), 6.5, 6.5, seg=8)   # bedroll
+    for x in (-10, 7):
+        p.cone("HatFelt", (x, 17, 19.5), (x + 3, 17, 19.5), 7.1, 7.1, seg=8)
+    return p.build()
+
+
 PROPS = [
     cypress("SM_SAS_CypressTall", 720, 11, moss=18),
     cypress("SM_SAS_CypressMid", 540, 23, moss=15),
@@ -322,6 +369,9 @@ PROPS = [
     campfire("SM_SAS_Campfire", 4),
     rock("SM_SAS_Rock", 6),
     grass_tuft("SM_SAS_GrassTuft", 9),
+    ranger_hat("SM_SAS_RangerHat", 1),
+    player_ring("SM_SAS_PlayerRing", 1),
+    backpack("SM_SAS_Backpack", 1),
 ]
 for ob in PROPS:
     print("PROP %s tris=%d" % (ob.name, len(ob.data.polygons)))
