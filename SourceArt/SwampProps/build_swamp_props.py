@@ -53,6 +53,7 @@ PALETTE = {
     "PlayerColor": (0.90, 0.15, 0.12),
     "Stink": (0.42, 0.70, 0.12),
     "Warning": (1.00, 0.10, 0.05),
+    "Treeline": (0.03, 0.07, 0.07),
 }
 MATERIALS = {}
 for key, rgb in PALETTE.items():
@@ -72,11 +73,12 @@ def along(p0, p1):
 
 
 class Prop:
-    def __init__(self, name, seed=1):
+    def __init__(self, name, seed=1, recalc=True):
         self.name = name
         self.bm = bmesh.new()
         self.mats = []
         self.rng = random.Random(seed)
+        self.recalc = recalc      # flat cards set their own facing, so they skip the normal recalculation
 
     def mat(self, key):
         if key not in self.mats:
@@ -128,10 +130,20 @@ class Prop:
             self.bm.faces.new([verts[i] for i in face])
         self._finish(key, nf, nv, 0.0)
 
+    def card(self, key, points, toward=(0, 0, 0)):
+        """A flat face that is made to look towards a point, whatever order its corners were given in."""
+        nf, nv = len(self.bm.faces), len(self.bm.verts)
+        face = self.bm.faces.new([self.bm.verts.new(p) for p in points])
+        face.normal_update()
+        if face.normal.dot(Vector(toward) - face.calc_center_median()) < 0:
+            face.normal_flip()
+        self._finish(key, nf, nv, 0.0)
+
     def build(self):
         mesh = bpy.data.meshes.new(self.name)
         bmesh.ops.triangulate(self.bm, faces=self.bm.faces[:])
-        bmesh.ops.recalc_face_normals(self.bm, faces=self.bm.faces[:])
+        if self.recalc:
+            bmesh.ops.recalc_face_normals(self.bm, faces=self.bm.faces[:])
         self.bm.to_mesh(mesh)
         self.bm.free()
         for key in self.mats:
@@ -383,6 +395,47 @@ def exclaim(name, seed):
     return p.build()
 
 
+def treeline(name, seed, radius, arc_deg, tree_h, count):
+    """A flat row of cypress silhouettes bent round an arc, for the far distance.
+
+    Pivot is the arc's centre at water level and the arc opens round +X; every face looks inwards.
+    Several of these at growing radius, each a shade nearer the sky colour, make the swamp fade out.
+    """
+    p = Prop(name, seed, recalc=False)
+    r = p.rng
+    half = math.radians(arc_deg) / 2
+
+    def pt(angle, z, push=0.0):
+        return (math.cos(angle) * (radius + push), math.sin(angle) * (radius + push), z)
+
+    # undergrowth: one jagged band right round the arc, so no water shows between the trunks
+    seg = count * 3
+    tops = [tree_h * r.uniform(0.16, 0.34) for _ in range(seg + 1)]
+    for i in range(seg):
+        a0 = -half + 2 * half * i / seg
+        a1 = -half + 2 * half * (i + 1) / seg
+        p.card("Treeline", [pt(a0, -40), pt(a1, -40), pt(a1, tops[i + 1]), pt(a0, tops[i])])
+    for k in range(count):
+        a = -half + 2 * half * (k + r.uniform(0.15, 0.85)) / count
+        h = tree_h * r.uniform(0.62, 1.0)
+        tw = h * 0.035 / radius                       # half the trunk's width, as an angle
+        cw = h * r.uniform(0.30, 0.44) / radius       # half the crown's width, as an angle
+        push = r.uniform(-30, 30)                     # stagger so overlapping cards do not flicker
+        p.card("Treeline", [pt(a - tw * 2.6, 0, push), pt(a + tw * 2.6, 0, push), pt(a + tw, h * 0.82, push), pt(a - tw, h * 0.82, push)])
+        # flat-topped crown
+        p.card("Treeline", [pt(a - cw, h * 0.84, push), pt(a - cw * 0.72, h * 0.75, push), pt(a + cw * 0.72, h * 0.75, push),
+                            pt(a + cw, h * 0.84, push), pt(a + cw * 0.62, h, push), pt(a - cw * 0.62, h, push)])
+        if r.random() < 0.55:                         # a second, lower tier on some
+            lw, lz = cw * r.uniform(0.45, 0.7), h * r.uniform(0.52, 0.66)
+            off = cw * r.uniform(-0.5, 0.5)
+            p.card("Treeline", [pt(a + off - lw, lz, push), pt(a + off + lw, lz, push), pt(a + off + lw * 0.6, lz + h * 0.09, push), pt(a + off - lw * 0.6, lz + h * 0.09, push)])
+        for _ in range(r.randint(2, 4)):              # hanging moss
+            m = a + cw * r.uniform(-0.8, 0.8)
+            mw = cw * 0.07
+            p.card("Treeline", [pt(m - mw, h * 0.78, push), pt(m + mw, h * 0.78, push), pt(m, h * r.uniform(0.5, 0.66), push)])
+    return p.build()
+
+
 PROPS = [
     cypress("SM_SAS_CypressTall", 720, 11, moss=18),
     cypress("SM_SAS_CypressMid", 540, 23, moss=15),
@@ -401,6 +454,9 @@ PROPS = [
     backpack("SM_SAS_Backpack", 1),
     stink_cloud("SM_SAS_StinkCloud", 2),
     exclaim("SM_SAS_Exclaim", 1),
+    treeline("SM_SAS_TreelineNear", 21, 6000, 230, 760, 62),
+    treeline("SM_SAS_TreelineMid", 22, 9500, 230, 1350, 56),
+    treeline("SM_SAS_TreelineFar", 23, 14000, 230, 2300, 52),
 ]
 for ob in PROPS:
     print("PROP %s tris=%d" % (ob.name, len(ob.data.polygons)))

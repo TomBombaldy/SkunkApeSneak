@@ -44,8 +44,9 @@ The `Plugins` folder contains the organizers' minigame framework from [BashMinig
 Made for this jam (MIT, in this repository):
 
 - The Skunk Ape model, rig and animations, built by script in Blender: `SourceArt/SkunkApe/build_skunk_ape.py`.
-- The swamp props (cypress trees, cattails, lily pads, logs, rocks, the campsite and picnic baskets) and the rangers' hats, backpacks and player rings: `SourceArt/SwampProps/build_swamp_props.py`.
+- The swamp props (cypress trees, far tree lines, cattails, lily pads, logs, rocks, the campsite and picnic baskets) and the rangers' hats, backpacks and player rings: `SourceArt/SwampProps/build_swamp_props.py`.
 - All sound effects and the looping sneaking tune, synthesized from oscillators and noise: `SourceArt/Audio/build_audio.py`.
+- The colour palette, designed in OKLCH (OKLab) so same-kind colours share lightness and chroma: `SourceArt/Palette/palette.py`.
 - The level, materials, Blueprints and HUD under `Content/SkunkApeSneak`.
 
 From Limbitless Solutions' [BashMinigameResources](https://github.com/LimbitlessSolutionsInc/BashMinigameResources) (MIT):
