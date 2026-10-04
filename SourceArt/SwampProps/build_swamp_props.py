@@ -383,6 +383,28 @@ def stink_cloud(name, seed):
     return p.build()
 
 
+def stink_stream(name, seed):
+    """The stink blast itself: a stream of puffs 1000 units long that widens as it goes.
+
+    Pivot is the narrow end (the Skunk Ape's hands) and it runs along +X; in the game it is
+    aimed at a caught ranger and stretched to reach them.
+    """
+    p = Prop(name, seed)
+    r = p.rng
+    count = 13
+    for i in range(count):
+        f = i / (count - 1)
+        size = 20 + 62 * f
+        centre = (f * 1000, r.uniform(-1, 1) * size * 0.35, r.uniform(-1, 1) * size * 0.35)
+        p.blob("Stink", centre, (size * 1.5, size, size * 0.9), sub=1, jitter=size * 0.08)
+        if i % 2 == 1:                                    # smaller puffs curling off the sides
+            a = r.uniform(0, math.tau)
+            off = size * 1.1
+            p.blob("Stink", (centre[0] + r.uniform(-30, 30), centre[1] + math.cos(a) * off, centre[2] + math.sin(a) * off),
+                   (size * 0.6, size * 0.5, size * 0.5), sub=1, jitter=size * 0.05)
+    return p.build()
+
+
 def exclaim(name, seed):
     """The warning sign over the Skunk Ape: a chunky exclamation mark facing down the trail. Pivot is the middle."""
     p = Prop(name, seed)
@@ -454,6 +476,7 @@ PROPS = [
     backpack("SM_SAS_Backpack", 1),
     stink_cloud("SM_SAS_StinkCloud", 2),
     exclaim("SM_SAS_Exclaim", 1),
+    stink_stream("SM_SAS_StinkStream", 5),
     treeline("SM_SAS_TreelineNear", 21, 6000, 230, 760, 62),
     treeline("SM_SAS_TreelineMid", 22, 9500, 230, 1350, 56),
     treeline("SM_SAS_TreelineFar", 23, 14000, 230, 2300, 52),
