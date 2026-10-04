@@ -43,6 +43,7 @@ Made for this jam (MIT, in this repository):
 
 - The Skunk Ape model, rig and animations, built by script in Blender: `SourceArt/SkunkApe/build_skunk_ape.py`.
 - The swamp props (cypress trees, cattails, lily pads, logs, rocks, the campsite and picnic baskets) and the rangers' hats, backpacks and player rings: `SourceArt/SwampProps/build_swamp_props.py`.
+- All sound effects and the looping sneaking tune, synthesized from oscillators and noise: `SourceArt/Audio/build_audio.py`.
 - The level, materials, Blueprints and HUD under `Content/SkunkApeSneak`.
 
 From Limbitless Solutions' [BashMinigameResources](https://github.com/LimbitlessSolutionsInc/BashMinigameResources) (MIT):
@@ -50,7 +51,6 @@ From Limbitless Solutions' [BashMinigameResources](https://github.com/Limbitless
 - The minigame framework and flex-controller input (MinigameCore, BashCore, LimbitlessBluetoothPlugin).
 - The modular ranger character and its idle, jump, defeat and clapping animations.
 - The night sky and moon materials, the grass and dirt textures, the master material, and a few Shadow-theme trees.
-- Sound effects from the example minigames (hop, knock-back, win and the ape's rumble).
 
 ## License
 
