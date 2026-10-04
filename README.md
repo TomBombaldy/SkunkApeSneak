@@ -45,7 +45,8 @@ Made for this jam (MIT, in this repository):
 
 - The Skunk Ape model, rig and animations, built by script in Blender: `SourceArt/SkunkApe/build_skunk_ape.py`.
 - The swamp props (cypress trees, far tree lines, cattails, lily pads, logs, rocks, the campsite and picnic baskets) and the rangers' hats, backpacks and player rings: `SourceArt/SwampProps/build_swamp_props.py`.
-- All sound effects and the looping sneaking tune, synthesized from oscillators and noise: `SourceArt/Audio/build_audio.py`.
+- The sound effects and the looping sneaking tune, synthesized from oscillators and noise: `SourceArt/Audio/build_audio.py`.
+- The "caught" sounds, recorded by Richard Farland: `SourceArt/Audio/Recorded`.
 - The colour palette, designed in OKLCH (OKLab) so same-kind colours share lightness and chroma: `SourceArt/Palette/palette.py`.
 - The level, materials, Blueprints and HUD under `Content/SkunkApeSneak`.
 
