@@ -1,0 +1,22 @@
+{
+	"OutputFiles": [
+		"..\\..\\..\\x64\\UnrealGame\\Development\\MinigameCore\\Module.MinigameCore.cpp.obj",
+		"..\\..\\..\\x64\\UnrealGame\\Development\\MinigameCore\\MinigameBase.cpp.obj",
+		"..\\..\\..\\x64\\UnrealGame\\Development\\MinigameCore\\MinigameCapture.cpp.obj",
+		"..\\..\\..\\x64\\UnrealGame\\Development\\MinigameCore\\MinigameCore.cpp.obj",
+		"..\\..\\..\\x64\\UnrealGame\\Development\\MinigameCore\\MinigameCoreBlueprintLibrary.cpp.obj",
+		"..\\..\\..\\x64\\UnrealGame\\Development\\MinigameCore\\MinigameCoreLogChannel.cpp.obj",
+		"..\\..\\..\\x64\\UnrealGame\\Development\\MinigameCore\\MinigameCustomizablePlayerComponent.cpp.obj",
+		"..\\..\\..\\x64\\UnrealGame\\Development\\MinigameCore\\BasePointCounter.cpp.obj",
+		"..\\..\\..\\x64\\UnrealGame\\Development\\MinigameCore\\LevelSequenceMinigameCutsceneManager.cpp.obj",
+		"..\\..\\..\\x64\\UnrealGame\\Development\\MinigameCore\\MinigameCutsceneManager.cpp.obj",
+		"..\\..\\..\\x64\\UnrealGame\\Development\\MinigameCore\\MinigameAIController.cpp.obj",
+		"..\\..\\..\\x64\\UnrealGame\\Development\\MinigameCore\\MinigamePlayer.cpp.obj",
+		"..\\..\\..\\x64\\UnrealGame\\Development\\MinigameCore\\PlayerAccelerationComponent.cpp.obj",
+		"..\\..\\..\\x64\\UnrealGame\\Development\\MinigameCore\\PlayerRotationComponent.cpp.obj",
+		"..\\..\\..\\x64\\UnrealGame\\Development\\MinigameCore\\PlayerRotationMovingAverageComponent.cpp.obj",
+		"..\\..\\..\\x64\\UnrealGame\\Development\\MinigameCore\\MinigameUI.cpp.obj",
+		"..\\..\\..\\x64\\UnrealGame\\Development\\MinigameCore\\PracticeModeUI.cpp.obj",
+		"..\\..\\..\\x64\\UnrealGame\\Development\\MinigameCore\\SplitscreenUI.cpp.obj"
+	]
+}
