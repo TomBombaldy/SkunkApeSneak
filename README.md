@@ -18,12 +18,12 @@ A 35-second gameplay video is in [`Video/SkunkApeSneak_gameplay_small.mp4`](Vide
 
 | Key | Action |
 |---|---|
-| I | Light flex |
-| O | Medium flex |
-| P | Strong flex |
-| Q | Ready all players (editor debug) |
+| A or I | Light flex |
+| S or O | Medium flex |
+| D or P | Strong flex |
 | 1-4 | Set the player count (editor debug) |
-| B | Hand rangers 2-4 to the computer (editor debug) |
+| E | Hand rangers 2-4 to the computer (editor debug) |
+| Q | Ready all players and start (editor debug) |
 
 ## Opening the project
 
