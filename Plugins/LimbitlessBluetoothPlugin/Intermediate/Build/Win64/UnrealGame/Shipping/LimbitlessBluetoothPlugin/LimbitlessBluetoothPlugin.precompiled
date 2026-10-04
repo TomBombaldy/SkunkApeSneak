@@ -1,0 +1,13 @@
+{
+	"OutputFiles": [
+		"..\\..\\..\\x64\\UnrealGame\\Shipping\\LimbitlessBluetoothPlugin\\Module.LimbitlessBluetoothPlugin.cpp.obj",
+		"..\\..\\..\\x64\\UnrealGame\\Shipping\\LimbitlessBluetoothPlugin\\FlexController.cpp.obj",
+		"..\\..\\..\\x64\\UnrealGame\\Shipping\\LimbitlessBluetoothPlugin\\LimbitlessBluetoothPlugin.cpp.obj",
+		"..\\..\\..\\x64\\UnrealGame\\Shipping\\LimbitlessBluetoothPlugin\\AsyncActionCalibrateFlex.cpp.obj",
+		"..\\..\\..\\x64\\UnrealGame\\Shipping\\LimbitlessBluetoothPlugin\\AsyncActionCalibrateIMU.cpp.obj",
+		"..\\..\\..\\x64\\UnrealGame\\Shipping\\LimbitlessBluetoothPlugin\\LimbitlessLocalPlayer.cpp.obj",
+		"..\\..\\..\\x64\\UnrealGame\\Shipping\\LimbitlessBluetoothPlugin\\LimbitlessPlayerController.cpp.obj",
+		"..\\..\\..\\x64\\UnrealGame\\Shipping\\LimbitlessBluetoothPlugin\\BluetoothManager.cpp.obj",
+		"..\\..\\..\\x64\\UnrealGame\\Shipping\\LimbitlessBluetoothPlugin\\GraphPlot.cpp.obj"
+	]
+}
