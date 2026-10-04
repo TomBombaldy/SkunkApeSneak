@@ -51,6 +51,8 @@ PALETTE = {
     "FlameCore": (1.00, 0.85, 0.30),
     "HatFelt": (0.50, 0.38, 0.22),
     "PlayerColor": (0.90, 0.15, 0.12),
+    "Stink": (0.42, 0.70, 0.12),
+    "Warning": (1.00, 0.10, 0.05),
 }
 MATERIALS = {}
 for key, rgb in PALETTE.items():
@@ -356,6 +358,31 @@ def backpack(name, seed):
     return p.build()
 
 
+def stink_cloud(name, seed):
+    """A puff of Skunk Ape stink that swells around a ranger who gets caught. Pivot is the middle."""
+    p = Prop(name, seed)
+    r = p.rng
+    p.blob("Stink", (0, 0, 0), (46, 46, 38), sub=1, jitter=4)
+    for i in range(7):
+        a = i / 7 * math.tau + r.uniform(-0.3, 0.3)
+        d = r.uniform(38, 58)
+        size = r.uniform(20, 34)
+        p.blob("Stink", (math.cos(a) * d, math.sin(a) * d, r.uniform(-22, 34)), (size, size, size * 0.85), sub=1, jitter=3)
+    return p.build()
+
+
+def exclaim(name, seed):
+    """The warning sign over the Skunk Ape: a chunky exclamation mark facing down the trail. Pivot is the middle."""
+    p = Prop(name, seed)
+    box = [(0, 3, 2, 1), (4, 5, 6, 7), (0, 1, 5, 4), (1, 2, 6, 5), (2, 3, 7, 6), (3, 0, 4, 7)]
+    def slab(z0, z1, w0, w1, depth):
+        return [(-depth, -w0, z0), (depth, -w0, z0), (depth, w0, z0), (-depth, w0, z0),
+                (-depth, -w1, z1), (depth, -w1, z1), (depth, w1, z1), (-depth, w1, z1)]
+    p.solid("Warning", slab(-14, 50, 8, 16, 9), box)      # the stroke, wider at the top
+    p.solid("Warning", slab(-50, -28, 10, 10, 9), box)    # the dot
+    return p.build()
+
+
 PROPS = [
     cypress("SM_SAS_CypressTall", 720, 11, moss=18),
     cypress("SM_SAS_CypressMid", 540, 23, moss=15),
@@ -372,6 +399,8 @@ PROPS = [
     ranger_hat("SM_SAS_RangerHat", 1),
     player_ring("SM_SAS_PlayerRing", 1),
     backpack("SM_SAS_Backpack", 1),
+    stink_cloud("SM_SAS_StinkCloud", 2),
+    exclaim("SM_SAS_Exclaim", 1),
 ]
 for ob in PROPS:
     print("PROP %s tris=%d" % (ob.name, len(ob.data.polygons)))

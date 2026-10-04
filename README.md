@@ -6,10 +6,10 @@ The Skunk Ape of the Florida swamps has swiped the campers' picnic baskets. You 
 
 ## How to play
 
-- Light flex: one quick step.
+- Light flex: one careful step.
 - Medium flex: two steps.
-- Strong flex: a four-step leap that leaves you in the air for a full second.
-- A red warning ball and a ping appear just before the Skunk Ape turns around. Anyone still moving while he looks is knocked back three steps.
+- Strong flex: a four-step leap. It covers ground fastest, but you are stuck in the air for almost a second.
+- A red exclamation mark and a ping appear just before the Skunk Ape turns around. Anyone still moving while he looks gets stink-blasted back five steps.
 - The first ranger to reach the baskets wins. If nobody makes it before time runs out, the ranger who got farthest wins.
 
 ### Keyboard controls (no flex controller needed)
@@ -35,11 +35,22 @@ The `Plugins` folder contains the organizers' minigame framework from [BashMinig
 ## Team
 
 - Richard Farland: design and direction.
-- Built with Claude (Anthropic) driving the Unreal Editor.
+- Built with Claude (Anthropic) driving the Unreal Editor and Blender: Blueprints, level, models and animation.
 
 ## Asset credits
 
-All art, animation and framework code comes from Limbitless Solutions' BashMinigameResources (MIT): the modular ranger character and animations, the Minotony character standing in as the Skunk Ape, and the Shadow and Serenity theme props.
+Made for this jam (MIT, in this repository):
+
+- The Skunk Ape model, rig and animations, built by script in Blender: `SourceArt/SkunkApe/build_skunk_ape.py`.
+- The swamp props (cypress trees, cattails, lily pads, logs, rocks, the campsite and picnic baskets) and the rangers' hats, backpacks and player rings: `SourceArt/SwampProps/build_swamp_props.py`.
+- The level, materials, Blueprints and HUD under `Content/SkunkApeSneak`.
+
+From Limbitless Solutions' [BashMinigameResources](https://github.com/LimbitlessSolutionsInc/BashMinigameResources) (MIT):
+
+- The minigame framework and flex-controller input (MinigameCore, BashCore, LimbitlessBluetoothPlugin).
+- The modular ranger character and its idle, jump, defeat and clapping animations.
+- The night sky and moon materials, the grass and dirt textures, the master material, and a few Shadow-theme trees.
+- Sound effects from the example minigames (hop, knock-back, win and the ape's rumble).
 
 ## License
 
