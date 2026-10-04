@@ -383,6 +383,19 @@ def stink_cloud(name, seed):
     return p.build()
 
 
+def finish_line(name, seed):
+    """A checkered finish line across the whole trail. Pivot is its centre; it is 52 deep and 940 wide."""
+    p = Prop(name, seed, recalc=False)
+    rows, cols, deep, wide = 2, 20, 26, 47
+    for i in range(rows):
+        for j in range(cols):
+            x0 = (i - rows / 2) * deep
+            y0 = (j - cols / 2) * wide
+            key = "ClothWhite" if (i + j) % 2 == 0 else "CanvasDark"
+            p.card(key, [(x0, y0, 0), (x0 + deep, y0, 0), (x0 + deep, y0 + wide, 0), (x0, y0 + wide, 0)], toward=(0, 0, 1000))
+    return p.build()
+
+
 def exclaim(name, seed):
     """The warning sign over the Skunk Ape: a chunky exclamation mark facing down the trail. Pivot is the middle."""
     p = Prop(name, seed)
@@ -454,6 +467,7 @@ PROPS = [
     backpack("SM_SAS_Backpack", 1),
     stink_cloud("SM_SAS_StinkCloud", 2),
     exclaim("SM_SAS_Exclaim", 1),
+    finish_line("SM_SAS_FinishLine", 1),
     treeline("SM_SAS_TreelineNear", 21, 6000, 230, 760, 62),
     treeline("SM_SAS_TreelineMid", 22, 9500, 230, 1350, 56),
     treeline("SM_SAS_TreelineFar", 23, 14000, 230, 2300, 52),
